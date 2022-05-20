@@ -10,6 +10,7 @@ public class IssueTrackerApiApplication {
 		SpringApplication.run(IssueTrackerApiApplication.class, args);
 		System.out.println();
 		System.out.println();
+		System.out.println();
 	}
 
 }
