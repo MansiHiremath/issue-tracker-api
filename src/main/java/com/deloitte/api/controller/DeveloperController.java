@@ -13,19 +13,26 @@ import com.deloitte.api.entities.Developer;
 import com.deloitte.api.services.DeveloperService;
 
 @RestController
-@RequestMapping("/issue-tracker-api")
+@RequestMapping("/developerService")
 public class DeveloperController {
 
+	/*
+	 * @Author:Atul
+	 * 
+	 * @CreationDate:
+	 * 
+	 */
 	@Autowired
-	public DeveloperService trackerService;
-	
-	@GetMapping("/get")
-	public List<Developer> getDeveloper() {
-		return trackerService.getDeveloper();
+	public DeveloperService developerService;
+
+	@GetMapping("/getAllDevelopers")
+	public List<Developer> getAllDevelopers() {
+		return developerService.getDeveloper();
 	}
-	
-	@PostMapping("/add")
+
+	@PostMapping("/addDeveloper")
 	public Developer addDeveloper(@RequestBody Developer developer) {
-		return trackerService.addDeveloper(developer);
+		return developerService.addDeveloper(developer);
 	}
+
 }
