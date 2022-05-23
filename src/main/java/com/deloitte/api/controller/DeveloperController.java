@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.deloitte.api.entities.Developer;
-import com.deloitte.api.services.TrackerService;
+import com.deloitte.api.services.DeveloperService;
 
 @RestController
 @RequestMapping("/issue-tracker-api")
 public class DeveloperController {
 
 	@Autowired
-	public TrackerService trackerService;
+	public DeveloperService trackerService;
 	
 	@GetMapping("/get")
 	public List<Developer> getDeveloper() {

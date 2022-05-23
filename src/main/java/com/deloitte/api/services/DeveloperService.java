@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.deloitte.api.entities.Developer;
 
 @Service
-public interface TrackerService {
+public interface DeveloperService {
 
 	public List<Developer> getDeveloper();
 	

@@ -11,7 +11,7 @@ import com.deloitte.api.entities.Developer;
 
 @Service
 @Component
-public class TrackerServiceImpl implements TrackerService {
+public class DeveloperServiceImpl implements DeveloperService {
 	
 	@Autowired
 	public DeveloperDao developerDao;
