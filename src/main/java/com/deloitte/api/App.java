@@ -1,15 +1,13 @@
-package com.deloitte.issuetrackerapi;
+package com.deloitte.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IssueTrackerApiApplication {
+public class App {
 
 	public static void main(String[] args) {
-		SpringApplication.run(IssueTrackerApiApplication.class, args);
-		System.out.println();
-		System.out.println();
+		SpringApplication.run(App.class, args);
 	}
 
 }
