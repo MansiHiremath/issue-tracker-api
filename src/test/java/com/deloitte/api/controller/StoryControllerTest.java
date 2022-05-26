@@ -16,42 +16,41 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class BugControllerTest {
-	/*
-	 * @Author:Mansi
-	 * @CreationDate:May 24,2022
-	 */
-	
+public class StoryControllerTest {
+
 	@Autowired
 	private MockMvc mockMvc;
 
 	@Test
-	public void createBugTest() {
-		String jsonReq = "{\"bugId\":\"1\",\"title\":\"\",\"description\":\"Bug\",\"creationDate\":\"May 23,2022\",\"assignedDeveloper\":\"\",\"priority\":\"critical\",\"status\":\"New\"}";
+	public void addStoryTest() {
+		String jsonReq = "{\"storyId\":\"\",\"storyTitle\":\"\",\"storyDescription\":\"Story\",\"creationDate\":\"May 25,2022\",\"assignedDeveloper\":\"\",\"storyStatus\":\"critical\"}";
 		try {
-			mockMvc.perform(MockMvcRequestBuilders.post("/bugService/createBug")
+			mockMvc.perform(MockMvcRequestBuilders.post("/storyService/addStory")
 					.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(jsonReq))
 					.andDo(print()).andExpect(status().isCreated());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 	@Test
-	public void updatebugsTest() {
-		String jsonReq = "{\"bugId\":\"\",\"title\":\"\",\"description\":\"Bug\",\"creationDate\":\"May 26,2022\",\"assignedDeveloper\":\"\",\"priority\":\"critical\",\"status\":\"New\"}";
+	public void updateStoryTest() {
+		String jsonReq = "{\"storyId\":\"\",\"storyTitle\":\"\",\"storyDescription\":\"Story\",\"creationDate\":\"May 25,2022\",\"assignedDeveloper\":\"\",\"storyStatus\":\"critical\"}";
 		try {
-			mockMvc.perform(MockMvcRequestBuilders.post("/bugService/updateBug")
+			mockMvc.perform(MockMvcRequestBuilders.post("/storyService/addStory")
 					.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(jsonReq))
 					.andDo(print()).andExpect(status().isCreated());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	@Test
-	public void deleteBugTest() {
+	public void deleteStoryTest() {
 		try {
 			mockMvc.perform(
-					MockMvcRequestBuilders.delete("/bugService/deleteBug/{id}", "1"))
+					MockMvcRequestBuilders.delete("/storyService/deleteStory/{storyId}", "0"))
 					.andExpect(status().isOk());
 		} catch (Exception e) {
 			e.printStackTrace();
