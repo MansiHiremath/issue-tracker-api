@@ -30,6 +30,18 @@ public class BugServiceTest {
 		verify(bugService, times(1)).createBug(bug);
 
 	}
+	@Test
+	public void GetallbugsTest() {
+		
+		bugService.getBug();
+		verify(bugService, times(1)).getBug();
+	}
+	@Test
+	public void updatebugsTest() {
+		Bug bug=new Bug(0,"Bug1","Data defect","May 23,2022","","critical","New");
+		bugService.updateBug(bug);
+		verify(bugService, times(1)).updateBug(bug);
+	}
 	
 	@Test
 	public void deleteBugTest() {

@@ -3,7 +3,8 @@ package com.deloitte.api.dao;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,6 +25,18 @@ BugDao bugDao;
 
 @Test
 public void createBugTest() {
+	Bug bug=new Bug(0,"Bug1","Data defect","May 23,2022","","critical","New");
+	bugDao.save(bug);
+	verify(bugDao, times(1)).save(bug);
+}
+@Test
+public void GetallbugsTest() {
+	 List<Bug> result=bugDao.findAll();
+	 assertThat(result).isNotNull();
+	
+}
+@Test
+public void updatebugsTest() {
 	Bug bug=new Bug(0,"Bug1","Data defect","May 23,2022","","critical","New");
 	bugDao.save(bug);
 	verify(bugDao, times(1)).save(bug);

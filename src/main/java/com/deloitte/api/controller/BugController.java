@@ -32,7 +32,7 @@ public class BugController {
 		return bugService.getBugById(id);
 		
 	}
-	@GetMapping("/bugs")
+	@GetMapping("/Getallbugs")
 	public List<Bug> getAllBug() {
 		return bugService.getBug();
 	}

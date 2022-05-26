@@ -36,7 +36,17 @@ public class BugControllerTest {
 			e.printStackTrace();
 		}
 	}
-	
+	@Test
+	public void updatebugsTest() {
+		String jsonReq = "{\"bugId\":\"\",\"title\":\"\",\"description\":\"Bug\",\"creationDate\":\"May 26,2022\",\"assignedDeveloper\":\"\",\"priority\":\"critical\",\"status\":\"New\"}";
+		try {
+			mockMvc.perform(MockMvcRequestBuilders.post("/bugService/updateBug")
+					.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(jsonReq))
+					.andDo(print()).andExpect(status().isCreated());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	@Test
 	public void deleteBugTest() {
 		try {
