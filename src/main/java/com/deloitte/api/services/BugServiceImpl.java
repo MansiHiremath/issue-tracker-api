@@ -27,9 +27,9 @@ public class BugServiceImpl implements BugService {
 		return bugDao.findAll();
 	}
 	@Override
-	public Bug updateBug(Bug bug) {
+	public DefaultResponse updateBug(Bug bug) {
 		DefaultResponse response=new DefaultResponse();
-		Bug oldBug=null;
+		DefaultResponse oldBug=null;
 		Optional<Bug> optionalbug=bugDao.findById(bug.getBugId());
 		if(optionalbug.isPresent()) {
 			bugDao.save(bug);

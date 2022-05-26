@@ -57,7 +57,7 @@ public class BugController {
 	
 	@PutMapping("/updatebugs")
 	 ResponseEntity<DefaultResponse> updateBug(@Valid @RequestBody Bug bug) {
-		DefaultResponse response=bugService.createBug(bug);
+		DefaultResponse response=bugService.updateBug(bug);
 		if(response.getStatus().equalsIgnoreCase("S"))
 			return new ResponseEntity<DefaultResponse>(response,HttpStatus.OK);
 		else
