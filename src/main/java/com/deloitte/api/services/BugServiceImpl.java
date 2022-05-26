@@ -14,7 +14,7 @@ import com.deloitte.api.response.DefaultResponse;
 public class BugServiceImpl implements BugService {
 	@Autowired
 	BugDao bugDao;
-	
+
 //	@Autowired
 //	DefaultResponse response;
 
@@ -46,22 +46,22 @@ public class BugServiceImpl implements BugService {
 
 	@Override
 	public DefaultResponse createBug(Bug bug) {
-		DefaultResponse response=new DefaultResponse();
-		Bug bugObj=bugDao.save(bug);
-		if(bugObj!=null) {
+		DefaultResponse response = new DefaultResponse();
+		Bug bugObj = bugDao.save(bug);
+		if (bugObj != null) {
 			response.setStatus("S");
-		}else
+		} else
 			response.setStatus("E");
 		return response;
 	}
 
 	@Override
 	public DefaultResponse deleteBug(String bugId) {
-		DefaultResponse response=new DefaultResponse();
+		DefaultResponse response = new DefaultResponse();
 		try {
-		bugDao.deleteById(Long.parseLong(bugId));
-		response.setStatus("S");
-		}catch (Exception e) {
+			bugDao.deleteById(Long.parseLong(bugId));
+			response.setStatus("S");
+		} catch (Exception e) {
 			response.setStatus("E");
 			response.setErrorMsg("Issue while deleting data");
 		}
