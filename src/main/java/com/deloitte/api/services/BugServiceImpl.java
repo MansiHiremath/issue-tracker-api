@@ -28,22 +28,21 @@ public class BugServiceImpl implements BugService {
 	}
 	@Override
 	public Bug updateBug(Bug bug) {
+		DefaultResponse response=new DefaultResponse();
 		Bug oldBug=null;
 		Optional<Bug> optionalbug=bugDao.findById(bug.getBugId());
 		if(optionalbug.isPresent()) {
-			Bug oldbug=optionalbug.get();
-			oldbug.setPriority(bug.getAssignedDeveloper());
-			oldbug.setStatus(bug.getCreationDate());
-			oldbug.setStatus(bug.getDescription());
-			oldbug.setStatus(bug.getTitle());
-		
+			bugDao.save(bug);
+			response.setStatus("S");
 		}else {
-			return new Bug(0, null, null, null, null, null, null);
+			response.setStatus("E");
+			response.setErrorMsg("Data Not Found for updation");
 		}
 		return oldBug;
 		
 		
 	}
+
 
 	@Override
 	public DefaultResponse createBug(Bug bug) {

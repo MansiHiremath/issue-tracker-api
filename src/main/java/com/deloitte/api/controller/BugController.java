@@ -33,8 +33,15 @@ public class BugController {
 		
 	}
 	@GetMapping("/Getallbugs")
-	public List<Bug> getAllBug() {
-		return bugService.getBug();
+	public ResponseEntity<List<Bug>> getAllBug() {
+		try{
+			List<Bug> list=bugService.getBug();
+			return new ResponseEntity<>(list,HttpStatus.OK);		
+			}catch (Exception e) {
+				
+				return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		
 	}
 	
 	
@@ -49,8 +56,13 @@ public class BugController {
 	}
 	
 	@PutMapping("/updatebugs")
-	public Bug updateUser(@RequestBody Bug bug) {
-		return bugService.updateBug(bug);
+	 ResponseEntity<DefaultResponse> updateBug(@Valid @RequestBody Bug bug) {
+		DefaultResponse response=bugService.createBug(bug);
+		if(response.getStatus().equalsIgnoreCase("S"))
+			return new ResponseEntity<DefaultResponse>(response,HttpStatus.OK);
+		else
+			return new ResponseEntity<DefaultResponse>(response,HttpStatus.NOT_FOUND);
+		
 		
 	}
 	
