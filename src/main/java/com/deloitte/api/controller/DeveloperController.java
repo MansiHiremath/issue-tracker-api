@@ -20,7 +20,7 @@ import com.deloitte.api.response.DefaultResponse;
 import com.deloitte.api.services.DeveloperService;
 
 @RestController
-@RequestMapping("/developerService")
+@RequestMapping("/developers")
 public class DeveloperController {
 
 	/*
@@ -31,8 +31,8 @@ public class DeveloperController {
 	 */
 	@Autowired
 	public DeveloperService developerService;
-	@Autowired
-	public DefaultResponse defaultResponse;
+//	@Autowired
+//	public DefaultResponse defaultResponse;
 
 	@GetMapping("/getAllDevelopers")
 	public ResponseEntity<List> getAllDevelopers() {
