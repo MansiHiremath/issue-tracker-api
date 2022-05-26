@@ -13,6 +13,6 @@ public interface StoryService {
 
 	public DefaultResponse updateStory(Story story);
 
-	public void deleteStory(long storyId); 
+	public DefaultResponse deleteStory(String storyId); 
 
 }

@@ -58,8 +58,18 @@ public class StoryServiceImpl implements StoryService {
 	}
 
 	@Override
-	public void deleteStory(long storyId) {
-    	   storyDao.deleteById(storyId);
+	public DefaultResponse deleteStory(String storyId) {
+//    	   storyDao.deleteById(storyId);
+    	   
+    	   DefaultResponse response = new DefaultResponse();
+   		try {
+   			storyDao.deleteById(Long.parseLong(storyId));
+   			response.setStatus("S");
+   		} catch (Exception e) {
+   			response.setStatus("E");
+   			response.setErrorMsg("Issue while deleting data");
+   		}
+   		return response;
 	}
 
 }

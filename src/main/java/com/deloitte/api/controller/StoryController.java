@@ -76,16 +76,15 @@ public class StoryController {
 	}
 
 	@DeleteMapping("/deleteStory/{storyId}")
-	public ResponseEntity<HttpStatus> deleteStory(@PathVariable long storyId) {
+	public ResponseEntity<DefaultResponse> deleteStory(@PathVariable String storyId) {
+		DefaultResponse response=storyService.deleteStory(storyId);
 		
-		try {
-			storyService.deleteStory(storyId);
-			return new ResponseEntity<HttpStatus>(HttpStatus.OK);
-		}catch (Exception e) {
-            return new ResponseEntity<HttpStatus>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		if(response.getStatus().equalsIgnoreCase("S"))
+			return new ResponseEntity<DefaultResponse>(response,HttpStatus.OK);
+		else
+			return new ResponseEntity<DefaultResponse>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+	   }
 
-	}
+			
+	
 }
-
-

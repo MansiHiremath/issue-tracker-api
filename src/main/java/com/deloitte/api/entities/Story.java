@@ -10,7 +10,7 @@ public class Story {
 	@Id
 	private long storyId;
 	private String storyTitle;
-	private String StoryDescription;
+	private String storyDescription;
 	private String creationDate;
 	private String assignedDeveloper;
 	private String storyStatus;
@@ -23,7 +23,7 @@ public class Story {
 		super();
 		this.storyId = storyId;
 		this.storyTitle = storyTitle;
-		StoryDescription = storyDescription;
+		this.storyDescription = storyDescription;
 		this.creationDate = creationDate;
 		this.assignedDeveloper = assignedDeveloper;
 		this.storyStatus = storyStatus;
@@ -41,10 +41,10 @@ public class Story {
 		this.storyTitle = storyTitle;
 	}
 	public String getStoryDescription() {
-		return StoryDescription;
+		return storyDescription;
 	}
 	public void setStoryDescription(String storyDescription) {
-		StoryDescription = storyDescription;
+		this.storyDescription = storyDescription;
 	}
 	public String getCreationDate() {
 		return creationDate;
@@ -64,16 +64,6 @@ public class Story {
 	public void setStoryStatus(String storyStatus) {
 		this.storyStatus = storyStatus;
 	}
-	@Override
-	public String toString() {
-		return "Story [storyId=" + storyId + ", storyTitle=" + storyTitle + ", StoryDescription=" + StoryDescription
-				+ ", creationDate=" + creationDate + ", assignedDeveloper=" + assignedDeveloper + ", storyStatus="
-				+ storyStatus + "]";
-	}
-	
-	
-
-
 	
 	
 }
