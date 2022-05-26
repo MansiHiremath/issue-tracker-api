@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/storyService")
 public class StoryController {
 	/*
-	 * @Author:Rubi
+	 * @Author: Atul
 	 * 
 	 * @CreationDate:
 	 * 
@@ -34,20 +34,14 @@ public class StoryController {
 	public StoryService storyService;
 	
 	@GetMapping("getAllStories")
-	public ResponseEntity<List> getAllStories() {
+	public ResponseEntity<List<Story>> getAllStories() {
 		try {
-			return new ResponseEntity<>(storyService.getStories(), HttpStatus.ACCEPTED);
-		} catch (DataIntegrityViolationException e) {
-			return new ResponseEntity<>(storyService.getStories(), HttpStatus.BAD_REQUEST);
+			List<Story> list=storyService.getStories();
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-//		DefaultResponse response=storyService.getStories();
-//		if (response.getStatus().equalsIgnoreCase("S")) {
-//			return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
-//		}else {
-//		
-//		return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
 	}
 
 	@PostMapping("addStory")
@@ -62,6 +56,12 @@ public class StoryController {
 		}
 	}
 
+	/*
+	 * @Author:Rubi 
+	 * 
+	 * @CreationDate:
+	 * 
+	 */
 	@PutMapping("/updateStory")
 	public ResponseEntity<DefaultResponse> updateStory(@RequestBody Story story) {
 		

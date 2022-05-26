@@ -20,7 +20,6 @@ public class StoryServiceImpl implements StoryService {
 		List<Story> result = null;
 		try {
 			result = storyDao.findAll();
-			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
