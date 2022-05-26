@@ -16,6 +16,6 @@ public interface BugService {
 
 	List<Bug> getBug();
 
-	Bug updateBug(Bug bug);
+	DefaultResponse updateBug(Bug bug);
 
 }

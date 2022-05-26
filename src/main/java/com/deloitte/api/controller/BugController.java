@@ -24,9 +24,10 @@ import com.deloitte.api.services.BugService;
 @RequestMapping("/bugService")
 public class BugController {
 	/* @Author:Mansi */
+	
+	  @Autowired
+      BugService bugService;
 
-	@Autowired
-	BugService bugService;
 	
 	@PostMapping("/createBug")
 	public ResponseEntity<DefaultResponse> createBug(@RequestBody Bug bug){
@@ -37,6 +38,17 @@ public class BugController {
 			return new ResponseEntity<DefaultResponse>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+
+	@PutMapping("/updatebugs")
+	 ResponseEntity<DefaultResponse> updateBug(@Valid @RequestBody Bug bug) {
+		DefaultResponse response=bugService.updateBug(bug);
+		if(response.getStatus().equalsIgnoreCase("S"))
+			return new ResponseEntity<DefaultResponse>(response,HttpStatus.OK);
+		else
+			return new ResponseEntity<DefaultResponse>(response,HttpStatus.NOT_FOUND);
+		
+		
+	}
 	
 	@DeleteMapping("/deleteBug/{id}")
 	public ResponseEntity<DefaultResponse> deleteBug(@PathVariable(value = "id") String bugId){
@@ -54,15 +66,18 @@ public class BugController {
 		return bugService.getBugById(id);
 		
 	}
-	@GetMapping("/bugs")
-	public List<Bug> getAllBug() {
-		return bugService.getBug();
-	}
-	
-	@PutMapping("/updatebug")
-	public Bug updateUser(@RequestBody Bug bug) {
-		return bugService.updateBug(bug);
+	@GetMapping("/GetAllbugs")
+	public ResponseEntity<List<Bug>> getAllBug() {
+		try{
+			List<Bug> list=bugService.getBug();
+			return new ResponseEntity<>(list,HttpStatus.OK);		
+			}catch (Exception e) {
+				
+				return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 		
 	}
+	
+	
 	
 }

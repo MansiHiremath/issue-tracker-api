@@ -27,10 +27,10 @@ public class BugServiceImpl implements BugService {
 	public List<Bug> getBug() {
 		return bugDao.findAll();
 	}
+	
 	@Override
-	public Bug updateBug(Bug bug) {
+	public DefaultResponse updateBug(Bug bug) {
 		DefaultResponse response=new DefaultResponse();
-		Bug oldBug=null;
 		Optional<Bug> optionalbug=bugDao.findById(bug.getBugId());
 		if(optionalbug.isPresent()) {
 			bugDao.save(bug);
@@ -39,10 +39,9 @@ public class BugServiceImpl implements BugService {
 			response.setStatus("E");
 			response.setErrorMsg("Data Not Found for updation");
 		}
-		return oldBug;
-		
-		
+		return response;
 	}
+
 
 	@Override
 	public DefaultResponse createBug(Bug bug) {
