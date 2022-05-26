@@ -1,10 +1,10 @@
-package com.deloitte.issuetrackerapi;
+package com.deloitte.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IssueTrackerApiApplicationTests {
+class AppTests {
 
 	@Test
 	void contextLoads() {
