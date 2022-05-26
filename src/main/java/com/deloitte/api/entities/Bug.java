@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Bug {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long bugId;
 	
 	@NotBlank
@@ -80,6 +79,10 @@ public class Bug {
 		this.assignedDeveloper = assignedDeveloper;
 		this.priority = priority;
 		this.status = status;
+	}
+	public Bug() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	

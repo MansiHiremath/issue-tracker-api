@@ -29,7 +29,7 @@ public class BugController {
 	BugService bugService;
 	
 	@PostMapping("/createBug")
-	public ResponseEntity<DefaultResponse> createBug(@Valid @RequestBody Bug bug){
+	public ResponseEntity<DefaultResponse> createBug(@RequestBody Bug bug){
 		DefaultResponse response=bugService.createBug(bug);
 		if(response.getStatus().equalsIgnoreCase("S"))
 			return new ResponseEntity<DefaultResponse>(response,HttpStatus.CREATED);
