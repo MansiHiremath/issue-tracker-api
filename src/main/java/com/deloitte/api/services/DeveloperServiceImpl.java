@@ -8,14 +8,17 @@ import org.springframework.stereotype.Service;
 
 import com.deloitte.api.dao.DeveloperDao;
 import com.deloitte.api.entities.Developer;
+import com.deloitte.api.response.DefaultResponse;
+
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @Service
 @Component
 public class DeveloperServiceImpl implements DeveloperService {
-	
+
 	@Autowired
 	public DeveloperDao developerDao;
-	
+
 	@Override
 	public List<Developer> getDeveloper() {
 		List<Developer> result = null;
@@ -30,15 +33,38 @@ public class DeveloperServiceImpl implements DeveloperService {
 	}
 
 	@Override
-	public Developer addDeveloper(Developer developer) {
-		Developer result = null;
-		try {
-			developerDao.save(developer);
-			return developer;
-		} catch (Exception e) {
-			e.printStackTrace();
+	public DefaultResponse addDeveloper(Developer developer) {
+
+		DefaultResponse response = new DefaultResponse();
+		Developer developerObj = developerDao.save(developer);
+		if (developerObj != null) {
+			response.setStatus("Success");
+			response.setErrorMsg("No Error");
+		} else {
+			response.setStatus("No");
+			response.setErrorMsg("Error found");
 		}
-		return result;
+		return response;
+	}
+
+	@Override
+	public DefaultResponse updateDeveloper(@RequestBody Developer developer) {
+
+		DefaultResponse response = new DefaultResponse();
+		Developer developerObj = developerDao.save(developer);
+		if (developerObj != null) {
+			response.setStatus("Success");
+			response.setErrorMsg("No Error");
+		} else {
+			response.setStatus("No");
+			response.setErrorMsg("Error found");
+		}
+		return response;
+	}
+
+	@Override
+	public void deleteDeveloper(long developerId) {
+		developerDao.deleteById(developerId);
 	}
 
 }
