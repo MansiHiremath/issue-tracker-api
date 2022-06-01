@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.deloitte.api.dao.DeveloperDao;
+import com.deloitte.api.dao.StoryDao;
 import com.deloitte.api.entities.Developer;
+import com.deloitte.api.entities.Story;
 import com.deloitte.api.response.DefaultResponse;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -19,6 +21,8 @@ public class DeveloperServiceImpl implements DeveloperService {
 	@Autowired
 	public DeveloperDao developerDao;
 
+	@Autowired
+	public StoryDao storyDao;
 	@Override
 	public List<Developer> getDeveloper() {
 		List<Developer> result = null;
@@ -66,5 +70,19 @@ public class DeveloperServiceImpl implements DeveloperService {
 	public void deleteDeveloper(long developerId) {
 		developerDao.deleteById(developerId);
 	}
+
+//	@Override
+//	public List<Story> getPlan() {
+//
+//		List<Developer> d = developerDao.getStatusByValue("Busy");
+//	    List<Story> s=storyDao.getCreationDateByValue("May 25,2022");
+//		System.out.println(d.contains("Busy"));
+////		System.out.println(d.getDeveloperName());
+////		d.setDeveloperStatus("Unavailable");
+////		developerDao.save(d);
+////		System.out.println(d.getDeveloperStatus());
+//		
+//		return s;
+//	}
 
 }

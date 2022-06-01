@@ -33,7 +33,7 @@ public class StoryController {
 	@Autowired
 	public StoryService storyService;
 	
-	@GetMapping("getAllStories")
+	@GetMapping("/getAllStories")
 	public ResponseEntity<List<Story>> getAllStories() {
 		try {
 			List<Story> list=storyService.getStories();
@@ -44,7 +44,7 @@ public class StoryController {
 		
 	}
 
-	@PostMapping("addStory")
+	@PostMapping("/addStory")
 	public ResponseEntity<DefaultResponse> addStory(@RequestBody Story story) {
 		
 		DefaultResponse response=storyService.addStory(story);
@@ -84,7 +84,6 @@ public class StoryController {
 		else
 			return new ResponseEntity<DefaultResponse>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 	   }
-
-			
+		
 	
 }

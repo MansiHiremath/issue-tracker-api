@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.deloitte.api.entities.Developer;
+import com.deloitte.api.entities.Story;
 import com.deloitte.api.response.DefaultResponse;
 import com.deloitte.api.services.DeveloperService;
 
@@ -78,4 +79,8 @@ public class DeveloperController {
 	}
 
 	}
+	
+	
+	
+		
 }
